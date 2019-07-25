@@ -1,8 +1,15 @@
 // Entry point to our backend
 const express = require('express');
+const connectDB = require('./config/db');
 
 // Initialize express into a variable 'app'
 const app = express();
+
+// Connect DB
+connectDB();
+
+// Init Middleware
+app.use(express.json({ extended: false }));
 
 // Adds a route • res.sendFile sends a file to the browser
 // Using res.json because we're dealing with/making a JSON API
